@@ -13,8 +13,7 @@ learning about it before because we spent too much of our precious
 little 48 hours learning about it during the session.. Anyway here is
 the result :)
 
-[![](http://plopbyte.com/wp-uploads/2010/04/press.jpg)](http://www.globalgamejam.org/2010/princesskunkunpechopecho)
+[![](media/2010/04/press.jpg)](http://www.globalgamejam.org/2010/princesskunkunpechopecho)
 
-Have a try  
+Have a try
 <http://www.globalgamejam.org/2010/princesskunkunpechopecho>
-

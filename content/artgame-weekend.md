@@ -28,5 +28,5 @@ links:
 
 [androidzoom](http://www.androidzoom.com/android\_games/casual/triumph-of-the-word\_ijqc.html)
 
--   [![](media/2010/07/screen1-300x169.jpg "screen1")](http://www.youtube.com/watch?v=roN9HsVh1zo)
--   [![](media/2010/07/chart-300x168.jpg "chart")](http://market.android.com/details?id=com.artgame.triumph)
+-   [![](media/2010/07/screen1.jpg "screen1")](http://www.youtube.com/watch?v=roN9HsVh1zo)
+-   [![](media/2010/07/chart.jpg "chart")](http://market.android.com/details?id=com.artgame.triumph)

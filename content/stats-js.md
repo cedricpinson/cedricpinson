@@ -14,11 +14,9 @@ redrawing the full graph. I want to get the previous result of the
 canvas then shift it by a delta (new\_time - previous\_time) and draw
 only one line for the delta elapsed. I have not check if it produces
 better performance but it was cool to code it. You can see the result
-[here](http://plopbyte.com/stats.js/) and the source code is on
-[bitbucket](https://bitbucket.org/cedricpinson/stats.js/overview) . The
+[here](demo/stats.js/) and the source code is on github. The
 only problem I could see is that the line are not as clean as it could
 because they are not connect from a full path, and the consequence is
 that antialias can't work on the full path.
 
-[![](http://plopbyte.com/wp-uploads/2011/02/Screenshot-12.jpg "Screenshot-12")](http://plopbyte.com/stats.js/)
-
+[![](media/2011/02/Screenshot-12.jpg "Screenshot-12")](demo/stats.js/)

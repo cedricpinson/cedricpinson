@@ -6,7 +6,7 @@ Slug: demojs
 
 We had a meeting a few months ago before the demojs event in Paris to
 organize it. I worked on the
-[intro](http://cedricpinson.com/demojs-fff/) to announce the event 10
+[intro](demojs-fff/) to announce the event 10
 days before the deadline. 4 of us made this intro: Guillaume Lecollinet
 who helped on design and css stuff, Ulrick for the music and Mestaty for
 3d models, both are from [FRequency](http://frequency.fr/) demo group
@@ -19,7 +19,7 @@ Particles again
 
 At the beginning I did not really know what I wanted to create. I wanted
 to work on particles but with more complexity than my [previous
-toy](http://plopbyte.com/2010/08/webgl-particles/). Finally I did an
+toy]({filename}/webgl-particles.md). Finally I did an
 intro only with particles. The consequence is that the entire intro used
 the same shader, I will describe the following stuff I used into the
 intro.
@@ -43,17 +43,17 @@ make it works on most browser with webgl so I did not use the extension.
 The consequence is that particles coordinates has to be encoded in
 specific format on rgba pixels.
 
--   [![](http://plopbyte.com/wp-uploads/2011/11/buffers-300x180.jpg "SAMSUNG")](http://plopbyte.com/2011/12/demojs/samsung-5/)
--   [![](http://plopbyte.com/wp-uploads/2011/11/pixels-300x180.jpg "SAMSUNG")](http://plopbyte.com/2011/12/demojs/samsung-4/)
+-   ![](media/2011/11/buffers.jpg "SAMSUNG")
+-   ![](media/2011/11/pixels.jpg "SAMSUNG")
 
 In my previous [particles
-toy](http://plopbyte.com/2010/08/webgl-particles/) I used 16 bits fixed
+toy]({filename}/webgl-particles.md) I used 16 bits fixed
 point to encode coordinates, but on this one I wanted to improve it and
 try 24 bits to have more precision, I encoded more informations like
 signed distance, life of particle, or material id in pixels. (picture
 above left). In webgl there is no multi render target and I had to draw
 the scene 3 times to compute particle's positions, for x, y and z. To
-select each dimension I wanted I used a uniform.  
+select each dimension I wanted I used a uniform.
 Finally to compute a 'next' frame (3 textures) it required 'current'
 frame (3 textures) 'previous' frame (3 textures), in final I needed 9
 textures to just have the verlet physic running without controlling
@@ -79,7 +79,7 @@ Distance Map
 
 What is a distance map ? you can read this [paper from
 valve](http://www.valvesoftware.com/publications/2007/SIGGRAPH2007_AlphaTestedMagnification.pdf)
-that explains how it works.  
+that explains how it works.
 Distance map is a really useful tool to control particles. In the intro
 I used texture that encodes distance map and gradient (the vector that
 tells you which direction to take to go to the nearest point on the
@@ -90,10 +90,31 @@ constructed a texture that contains both pieces of information. During
 the computation of the position I take the signed distance of this
 position to fit the shape I want, eg:
 
-`  vec3 getDirection(vec3 pos) {    vec4 d = texture2D( DistanceMap, vec2(pos.x, pos.z));    vec2 grad = d.rg;    vec3 dir = vec3(0.5-grad[0], 0.125*(0.5-pos.y), 0.5-grad[1]);    dir = normalize(dir);    return dir; } float getDistance(vec3 pos) {    float d = texture2D( DistanceMap, vec2(pos.x, pos.z)).b;    return d; } // here I know at wich distance my particle is from the nearest border distance = getDistance(currentPosition)*weightDistanceMap; // and here I know in wich direction the nearest border is direction = getDirection(currentPosition)*weightDistanceMap*0.4; // it's easy after to use this direction to create a force and make the // particle go in the direction of the shape`
+    :::GLShaderLexer
+    vec3 getDirection(vec3 pos) {
+      vec4 d = texture2D( DistanceMap, vec2(pos.x, pos.z));
+      vec2 grad = d.rg;
+      vec3 dir = vec3(0.5-grad[0], 0.125*(0.5-pos.y), 0.5-grad[1]);
+      dir = normalize(dir);
+      return dir;
+    }
 
--   [![](http://plopbyte.com/wp-uploads/2011/11/Title-300x167.jpg "Title")](http://plopbyte.com/wp-uploads/2011/11/Title.jpg)
--   [![](http://plopbyte.com/wp-uploads/2011/11/Title_grad-300x167.jpg "Title_grad")](http://plopbyte.com/wp-uploads/2011/11/Title_grad.jpg)
+    float getDistance(vec3 pos) {
+      float d = texture2D( DistanceMap, vec2(pos.x, pos.z)).b;
+      return d;
+    }
+
+    // here I know at wich distance my particle is from the nearest border
+    distance = getDistance(currentPosition)*weightDistanceMap;
+
+    // and here I know in wich direction the nearest border is
+    direction = getDirection(currentPosition)*weightDistanceMap*0.4;
+
+    // it's easy after to use this direction to create a force and make the
+    // particle go in the direction of the shape`
+
+-   ![](media/2011/11/Title.jpg "Title")
+-   ![](media/2011/11/Title_grad.jpg "Title_grad")
 
 This technique was used for most of the motions/shapes I wanted the
 particles to fit in. I tried to manipulate particles manually but it was
@@ -103,7 +124,7 @@ really easier.
 Velocity field
 --------------
 
-[![](http://plopbyte.com/wp-uploads/2011/11/udav1-300x167.jpg "udav")](http://plopbyte.com/wp-uploads/2011/11/udav1.jpg)
+![](media/2011/11/udav1.jpg "udav")
 
 To add some perturbation motion like 'procedural wind' I used a
 MathGL/udav tool. The idea was to find a nice formula I could use in the
@@ -114,7 +135,16 @@ really convenient and maybe next time I will write something to help me
 with this. Once the formula was selected I used a lookup to get my
 vector depending on particle's position. It looks like this below:
 
-`             "vec3 getVelocityField(vec3 pos) {",             "   float t = mod(time,15.0); //mod(time, 5.0);",             "   float vx = 0.0+cos(0.5+2.0*(pos.x*pos.x*t));",             "   float vy = cos(4.0*(pos.y*t+ seed*0.5)) + seed * sin(4.0*pos.x*t*t);",             "   float vz = cos(pos.z*2.0*t);",             "   vec3 vel = vec3( vx, vy, vz);",             "   return normalize(vel);",             "}",`
+    :::GLShaderLexer
+    vec3 getVelocityField(vec3 pos) {
+      float t = mod(time,15.0);
+      //mod(time, 5.0);
+      float vx = 0.0+cos(0.5+2.0*(pos.x*pos.x*t));
+      float vy = cos(4.0*(pos.y*t+ seed*0.5)) + seed * sin(4.0*pos.x*t*t);
+      float vz = cos(pos.z*2.0*t);
+      vec3 vel = vec3( vx, vy, vz);
+      return normalize(vel);
+    }
 
 3D models
 ---------
@@ -156,7 +186,7 @@ elements.
 links
 -----
 
--   [Intro fff](http://plopbyte.com/demojs-fff/) or the
+-   [Intro fff](demojs-fff/) or the
     [video](http://www.youtube.com/watch?v=DHup1JfEsXo)
 -   [directtovideo](http://directtovideo.wordpress.com/)
 -   [codeflow](http://codeflow.org/)
@@ -171,4 +201,3 @@ links
 Thanks for people who helps to make this webgl intro it was really fun.
 The most stuff I liked was the good ambience of the team, that was
 really cool. Thank you guys :)
-

@@ -11,9 +11,8 @@ element you can plug on it.
 The pipeline use blender file exported to OpenScenGraph format and then
 it convert it to osg.js . If you have a modern browser with
 [WebGL](http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation),
-have a try with [real time version](http://plopbyte.com/veditor) or try
-the video [here](http://plopbyte.net/veditor/video.webm) or on
-[youtube](http://www.youtube.com/watch?v=kMAqplEhnOA)
+have a try with [real time version](demo/veditor/) or try
+the video on [youtube](http://www.youtube.com/watch?v=kMAqplEhnOA)
 
--   [![](http://plopbyte.com/wp-uploads/2011/03/screen0.jpg "screen0")](http://plopbyte.com/2011/03/vehicle-editor/screen0-2/)
--   [![](http://plopbyte.com/wp-uploads/2011/03/screen1.jpg "screen1")](http://plopbyte.com/2011/03/vehicle-editor/screen1-2/)
+-   ![](media/2011/03/screen0.jpg "screen0")
+-   ![](media/2011/03/screen1.jpg "screen1")

@@ -16,8 +16,8 @@ Each has its own speed and specific paths. The user can select any of
 these ships to take advantage of the pilot’s view and explore the scene.
 In this post I will explain how we made it.
 
--   [![](http://plopbyte.com/wp-uploads/2012/01/xlarge_nv_2_361c2-300x168.jpg "xlarge_nv_2_361c2")](http://plopbyte.com/2012/02/nouvelle-vague-behind-the-scene/xlarge_nv_2_361c2-2/)
--   [![](http://plopbyte.com/wp-uploads/2012/01/xlarge_nv_3_4b86e-300x168.jpg "xlarge_nv_3_4b86e")](http://plopbyte.com/2012/02/nouvelle-vague-behind-the-scene/xlarge_nv_3_4b86e-2/)
+-   ![](media/2012/01/xlarge_nv_2_361c2.jpg "xlarge_nv_2_361c2")
+-   ![](media/2012/01/xlarge_nv_3_4b86e.jpg "xlarge_nv_3_4b86e")
 
 click for [real time version here](http://nouvellevague.ultranoir.com/)
 ( after the video intro ). If your browser does not support webgl you
@@ -31,8 +31,8 @@ leave a tweet. We did not want to manage vehicle collisions, after a
 while, we decided to organize scene and vehicles animations like the
 picture below.
 
--   [![](http://plopbyte.com/wp-uploads/2012/01/animation_row0-300x179.jpg "animation_row0")](http://plopbyte.com/2012/02/nouvelle-vague-behind-the-scene/animation_row0/)
--   [![](http://plopbyte.com/wp-uploads/2012/01/animation_row1-300x180.jpg "animation_row1")](http://plopbyte.com/2012/02/nouvelle-vague-behind-the-scene/animation_row1/)
+-   ![](media/2012/01/animation_row0.jpg "animation_row0")
+-   ![](media/2012/01/animation_row1.jpg "animation_row1")
 
 The idea is to avoid vehicles to penetrate each other, for this we
 constrained each vehicle in a 'row' in which the animation will be
@@ -66,8 +66,8 @@ it in realtime. Below you can see picture from the [Valve
 paper](http://www.valvesoftware.com/publications/2007/SIGGRAPH2007_AlphaTestedMagnification.pdf),
 both image are at the same resolution.
 
--   [![](http://plopbyte.com/wp-uploads/2012/01/valve_0.png "valve_0")](http://plopbyte.com/2012/02/nouvelle-vague-behind-the-scene/valve_0/)
--   [![](http://plopbyte.com/wp-uploads/2012/01/valve_12.png "valve_1")](http://plopbyte.com/2012/02/nouvelle-vague-behind-the-scene/valve_1-3/)
+-   ![](media/2012/01/valve_0.png "valve_0")
+-   ![](media/2012/01/valve_12.png "valve_1")
 
 (Pictures from valve paper)
 
@@ -75,7 +75,11 @@ The only problem I had was for the big text/logo in center of the scene,
 even with distance map I had aliasing because of the static 'edge size'
 in the shader.
 
-`float start = 0.5-edgeSize; float end = 0.5+edgeSize; float a = smoothstep(start, end, color);`
+    :::GLShaderLexer
+    float start = 0.5-edgeSize;
+    float end = 0.5+edgeSize;
+    float a = smoothstep(start, end, color);
+
 To fix this, I adapted the 'edgeSize' depending on the camera position,
 it's more a hack to fix aliasing than a real fix.
 
@@ -102,8 +106,8 @@ range. Off course we had to tune the range for each animations of
 vehicles. You can see below the differents event in timeline for a
 vehicles.
 
--   [![](http://plopbyte.com/wp-uploads/2012/02/timeline_0-300x180.jpg "timeline_0")](http://plopbyte.com/2012/02/nouvelle-vague-behind-the-scene/timeline_0/)
--   [![](http://plopbyte.com/wp-uploads/2012/02/timeline_1-300x180.jpg "timeline_1")](http://plopbyte.com/2012/02/nouvelle-vague-behind-the-scene/timeline_1/)
+-   ![](media/2012/02/timeline_0.jpg "timeline_0")
+-   ![](media/2012/02/timeline_1.jpg "timeline_1")
 
 *Delay Random*: random time before playing vehicle animation.
 *Leave tweet*: time when the tweet box leave the vehicle and play the
@@ -127,8 +131,8 @@ project the shape of the plane onto the ground. Using this method meant
 no soft edges for shadow plus some artifact due to blending. Deadline
 make us to fix it later.
 
--   [![](http://plopbyte.com/wp-uploads/2012/01/shadow_issue.jpg "shadow_issue")](http://plopbyte.com/2012/02/nouvelle-vague-behind-the-scene/shadow_issue/)
--   [![](http://plopbyte.com/wp-uploads/2012/01/shadow_issue2-300x179.jpg "shadow_issue2")](http://plopbyte.com/2012/02/nouvelle-vague-behind-the-scene/shadow_issue2/)
+-   ![](media/2012/01/shadow_issue.jpg "shadow_issue")
+-   ![](media/2012/01/shadow_issue2.jpg "shadow_issue2")
 
 There is a [shadow
 example](http://osgjs.org/osgjs/examples/shadow/index.html) in
@@ -144,15 +148,15 @@ wind to the statue.
 I first setup the effect [on this
 page](http://osgjs.org/osgjs/examples/cubemotion/) and then improved it
 with a fake wind like in the
-[demojs-fff](http://plopbyte.com/demojs-fff/). To finish I added a
+[demojs-fff](demo/demojs-fff/). To finish I added a
 simple fade out when cubes are near the statue and voila.
 The effect was not optimized and I used one 3d model per cube, that
 would be better to use pseudo instancied cube or pack all cube into one
 model and passing transformation to the shader with attributes or
 uniforms, again time...
 
--   [![](http://plopbyte.com/wp-uploads/2012/01/transition_0-300x180.jpg "transition_0")](http://plopbyte.com/2012/02/nouvelle-vague-behind-the-scene/transition_0/)
--   [![](http://plopbyte.com/wp-uploads/2012/01/transition_1-300x180.jpg "transition_1")](http://plopbyte.com/2012/02/nouvelle-vague-behind-the-scene/transition_1/)
+-   ![](media/2012/01/transition_0.jpg "transition_0")
+-   ![](media/2012/01/transition_1.jpg "transition_1")
 
 Clouds
 ------
@@ -177,8 +181,8 @@ different method
 
 <!-- -->
 
--   [![](http://plopbyte.com/wp-uploads/2012/01/cloud_0-300x180.jpg "cloud_0")](http://plopbyte.com/2012/02/nouvelle-vague-behind-the-scene/cloud_0/)
--   [![](http://plopbyte.com/wp-uploads/2012/01/cloud_1-300x180.jpg "cloud_1")](http://plopbyte.com/2012/02/nouvelle-vague-behind-the-scene/cloud_1/)
+-   ![](media/2012/01/cloud_0.jpg "cloud_0")
+-   ![](media/2012/01/cloud_1.jpg "cloud_1")
 
 Tools
 -----
@@ -200,7 +204,7 @@ and save set of parameters, but even without that it was really
 convenient to let artist worked this way. You can see on the screenshot
 below the sliders used to fine tune the rendering effects.
 
-[![](http://plopbyte.com/wp-uploads/2012/01/sliders-1024x614.jpg "sliders")](http://plopbyte.com/2012/02/nouvelle-vague-behind-the-scene/sliders/)
+![](media/2012/01/sliders.jpg "sliders")
 
 You can try the [developer
-version](http://cedricpinson.com/nouvellevague/) and play with sliders
+version](demo/nouvellevague/) and play with sliders

@@ -10,6 +10,5 @@ and an overview of code inside the application. I did the slides with
 [dzslides](http://paulrouget.com/e/introdzslides/) from Paul Rouget,
 thanks for this tool :)
 
--   [![](http://plopbyte.com/wp-uploads/2011/04/slides1.jpg "slides1")](http://plopbyte.com/insideglobetweeter/)
--   [![](http://plopbyte.com/wp-uploads/2011/04/slides0.jpg "slides0")](http://plopbyte.com/insideglobetweeter/)
-
+-   [![](media/2011/04/slides1.jpg "slides1")](demo/insideglobetweeter/)
+-   [![](media/2011/04/slides0.jpg "slides0")](demo/insideglobetweeter/)

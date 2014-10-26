@@ -22,8 +22,8 @@ I started off by creating a file system similar to the 3D file system
 used in Jurassic Park. I had to figure out the best type of camera that
 would be suitable to use with the system.
 
--   ![](http://plopbyte.com/wp-uploads/2011/03/camera-1-300x168.jpg "Camera")
--   ![](http://plopbyte.com/wp-uploads/2011/03/camera-0-300x168.jpg "Camera")
+-   ![](media/2011/03/camera-1.jpg "Camera")
+-   ![](media/2011/03/camera-0.jpg "Camera")
 
 The idea is simple. Let's say a user selects the item **B** . When
 selected, the camera moves from its current viewpoint to the chosen
@@ -35,17 +35,17 @@ B**) and generated a rotation around this interpolated point (**X**)
 during the animation. I added some constraints like the distance from
 the target point and some limits in the rotation to keep the camera
 position in range (like if we would see the item from a 3rd person).
-Check out this [experiment](http://plopbyte.com/ff4demo/demo3/demo.html)
+Check out this [experiment](demo/ff4demo/demo3/demo.html)
 (use 'del' key to go to previous level).
 
 ### Twitter
 
 This idea ended up being too geeky, so we tried out something more
 popular and surrounded by more hype. And therein was born the idea of
-displaying tweets with 3D.  
+displaying tweets with 3D.
 A first try was to iterate on something like tweet deck but we wanted
 something that would be more responsive and with eye candy features...
-the first ugly [experiment](http://plopbyte.com/ff4demo/demo2/demo.html)
+the first ugly [experiment](demo/ff4demo/demo2/demo.html)
 was to render tweets in a canvas and to use them as texture in 3D. We
 ended up dropping this idea and instead decided to show tweets
 geo-localized on the earth.
@@ -70,8 +70,8 @@ triangles in order to have enough vertex to project a clean shape on the
 sphere. For this I have created a tool called 'grid'. It tessellates the
 input shape with a grid. It's a kind of boolean union operation.
 
--   [![](http://plopbyte.com/wp-uploads/2011/03/grid-300x168.jpg "grid")](http://plopbyte.com/2011/05/globetweeter-experience/grid/)
--   [![](http://plopbyte.com/wp-uploads/2011/03/grid0-300x168.jpg "grid0")](http://plopbyte.com/2011/05/globetweeter-experience/grid0/)
+-   ![](media/2011/03/grid.jpg "grid")
+-   ![](media/2011/03/grid0.jpg "grid0")
 
 Above on the left, you can see the white model that is the original
 '110m admin 0 countries.shp'. The black model is the same model but
@@ -85,10 +85,10 @@ vertex onto a sphere using the standard [WGS84
 projection](http://en.wikipedia.org/wiki/WGS84). **You can see a webgl
 version of the projected model by clicking on the picture**.
 
--   [![](http://plopbyte.com/wp-uploads/2011/03/globe-2-300x168.jpg "globe-2")](http://showwebgl.com/show/?q=e8lx1nt7jd448k8cg8g4gsws44owsgo&LIGHT=0)
--   [![](http://plopbyte.com/wp-uploads/2011/03/globe-1-300x168.jpg "globe-1")](http://showwebgl.com/show/?q=iy9ll8zf4kgks8cw8wk0oc48g8w80ww&LIGHT=0)
--   [![](http://plopbyte.com/wp-uploads/2011/03/globe-0-300x168.jpg "globe-0")](http://showwebgl.com/show/?q=lvzodmgqc7kcsc0k08cgs08owwsccwk&CULL_FACE=0)
--   [![](http://plopbyte.com/wp-uploads/2011/03/globe-4-300x168.jpg "globe-4")](http://showwebgl.com/show/?q=ageig6tuwqgw04gscw40k08s0ssgckg&LIGHT=0)
+-   ![](media/2011/03/globe-2.jpg "globe-2")
+-   ![](media/2011/03/globe-1.jpg "globe-1")
+-   ![](media/2011/03/globe-0.jpg "globe-0")
+-   ![](media/2011/03/globe-4.jpg "globe-4")
 
 Once the data below were ready we selected a nice color for each model.
 On the demo I drew the globe in two passes. The first pass drew back
@@ -97,14 +97,14 @@ the front faces with 'front color'. It was necessary to have
 transparency of the globe because of the blending mode 'One Minus Src
 Alpha'.
 
-The Final result looks like this  
-  
+The Final result looks like this
 
-[![](http://plopbyte.com/wp-uploads/2011/05/Screenshot-21-1024x576.jpg "Screenshot-21")](http://plopbyte.com/2011/05/globetweeter-experience/screenshot-21/)
+
+![](media/2011/05/Screenshot-21.jpg "Screenshot-21")
 
 ### SceneGraph representation
 
-[![](http://plopbyte.com/wp-uploads/2011/04/gt_tree.jpg "SceneGraph")](http://plopbyte.com/2011/05/globetweeter-experience/samsung-3/)
+![](media/2011/04/gt_tree.jpg "SceneGraph")
 
 ### Wave
 
@@ -120,7 +120,7 @@ The update function did the following operations:
 -   Convert tweets locations into source wave in the canvas.
 -   Do the physics computation and store the result into the current
     canvas.
--   Upload the current canvas as texture to use in the vertex shader.  
+-   Upload the current canvas as texture to use in the vertex shader.
     The vertex shader used this texture as a
     [heightmap](http://en.wikipedia.org/wiki/Heightmap). To understand
     better how the heightmap works you can see
@@ -129,6 +129,7 @@ The update function did the following operations:
 
 Vertex Shader
 
+    :::GLShaderLexer
     #ifdef GL_ES
     precision highp float;
     #endif
@@ -155,6 +156,7 @@ Vertex Shader
 
 Fragment Shader
 
+    :::GLShaderLexer
     #ifdef GL_ES
     precision highp float;
     #endif
@@ -175,6 +177,7 @@ project](https://groups.google.com/group/angleproject/browse_thread/thread/fbf08
 
 Vertex Shader
 
+    :::GLShaderLexer
     #ifdef GL_ES
     precision highp float;
     #endif
@@ -198,6 +201,7 @@ Vertex Shader
 
 Fragment Shader
 
+    :::GLShaderLexer
     #ifdef GL_ES
     precision highp float;
     #endif
@@ -224,21 +228,23 @@ positioned on the sphere from latitude/longitude. To add a nice border
 around the image I used a blending operation in the canvas with the
 following image.
 
-![](http://plopbyte.com/wp-uploads/2011/04/tweets.jpg "tweets")
+![](media/2011/04/tweets.jpg "tweets")
 
 Finally to have a nice animation when a tweet appears and disappears, I
 used an EaseInQuad function for the color, and EaseOutElastic for the
 scale component.
 
+    :::JavascriptLexer
     EaseInQuad = function(t) { return (t*t); };
-    EaseOutElastic = function(t) { return Math.pow(2.0, -10.0*t) * 
-                                             Math.sin((t-0.3/4.0) * 
+    EaseOutElastic = function(t) { return Math.pow(2.0, -10.0*t) *
+                                             Math.sin((t-0.3/4.0) *
                                              (2.0*Math.PI) / 0.3) + 1.0; };
 
 Zooming to the earth made tweet really huge related to the screen. To
 prevent this effect I introduced a scale factor that depends on the
 camera altitude. The full code to update a tweet looks like this
 
+    :::JavascriptLexer
     update: function(node, nv) {
         var ratio = 0;
         var currentTime = nv.getFrameStamp().getSimulationTime();
@@ -280,7 +286,7 @@ camera altitude. The full code to update a tweet looks like this
         node.traverse(nv);
     }
 
-  
+
 
 ### NodeJS
 
@@ -289,16 +295,16 @@ nodejs. I used twitter-node, socket.io, and express modules to build the
 server. The code is really short so you can have a look on the server
 directly. You can get the server code
 [here](https://github.com/cedricpinson/globetweeter-server/) and improve
-it :) A big huggy to proppy who bootstraps the the nodejs server \\o/
+it :) A big hug to proppy who bootstraps the nodejs server \\o/
 
 ### Stats
 
 The first graph shows the number of connections per day. There is a big
 spike when the news was broadcasted. The second graph shows the number
 of connections per day but with a smaller scale and the last graph shows
-the cumulated number of connections.  
-  
-[![](http://plopbyte.com/wp-uploads/2011/05/stats1-853x1024.png "stats")](http://plopbyte.com/2011/05/globetweeter-experience/stats-2/)
+the cumulated number of connections.
+
+![](media/2011/05/stats1.png "stats")
 
 **Links**
 
@@ -316,10 +322,9 @@ the cumulated number of connections.
 -   [globe tweeter server source
     code](https://github.com/cedricpinson/globetweeter-server)
 -   [osgjs](https://github.com/cedricpinson/osgjs)
--   [showwebgl to convert / display model on the
+-   [sketchfab to convert / display model on the
     web](https://sketchfab.com)
--   [conf at parisjs\#6](http://plopbyte.com/insideglobetweeter/)
+-   [conf at parisjs\#6](demo/insideglobetweeter/)
 
 A big thanks to Paul Rouget from Mozilla who made this demo possible and
 Guillaume Lecollinet who designed this demo.
-
