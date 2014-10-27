@@ -186,7 +186,7 @@ elements.
 links
 -----
 
--   [Intro fff](demojs-fff/) or the
+-   [Intro fff](demo/demojs-fff/) or the
     [video](http://www.youtube.com/watch?v=DHup1JfEsXo)
 -   [directtovideo](http://directtovideo.wordpress.com/)
 -   [codeflow](http://codeflow.org/)
