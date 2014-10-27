@@ -1,0 +1,2 @@
+/var/www/vehicleEditor/build/data/CMakeFiles/SceneChassis.dir
+/var/www/vehicleEditor/build/data/CMakeFiles/SceneItems.dir

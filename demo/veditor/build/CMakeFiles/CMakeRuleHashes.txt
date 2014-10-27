@@ -1,0 +1,5 @@
+# Hashes of file build rules.
+4ca482d7f6abdc5a26291026d36a44a6 data/CMakeFiles/SceneChassis
+4ca482d7f6abdc5a26291026d36a44a6 data/CMakeFiles/SceneItems
+0bab7598791a76a813ff1016ea0f73f9 data/chassis/chassis.osg
+605ea5dcbbbb205b09460cb7fb16daec data/items/items.osg

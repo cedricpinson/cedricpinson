@@ -1,0 +1,157 @@
+<html>
+
+<head>
+  <style>
+    body {
+        background-color: black;
+ 	//background: black;
+	overflow:hidden;
+	padding:0;
+	margin:0;
+	}
+
+    #View {
+    margin-left: auto;
+    margin-right: auto;
+    //background: #00000000;
+    box-shadow: 0px 0px 10px 10px #111;
+    -moz-box-shadow: 0px 0px 10px 10px #111;
+    -webkit-box-shadow: 0px 0px 10px #111
+    }
+    
+    ul {
+    margin: 0;
+    padding: 0;
+    }
+    #file {
+        color: white;
+    }
+    #control {
+	position:absolute;
+	left:40px;
+	top:20px;
+        color: white;
+    /**background: #040404; */
+	z-index:10;
+    }
+
+    #elements {
+    position:relative;
+    }
+
+    #chassis {
+    float:left;
+    width: 150;
+    }
+
+    #slots {
+    float:left;
+    width: 150;
+    }
+
+    #items {
+    float:left;
+    width: 150;
+    }
+
+    #clear {
+    clear: both;
+    }
+
+  </style>
+  
+<title>Cars Editor WebGL</title>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+<script type="text/javascript" src="jquery-1.4.2.js"></script>
+<script type="text/javascript" src="jquery.mousewheel.js"></script>
+<script type="text/javascript">
+$.noConflict();
+</script>
+<script type="text/javascript" src="osg.js"></script>
+<script type="text/javascript" src="osgAnimation.js"></script>
+<script type="text/javascript" src="osgGA.js"></script>
+<script type="text/javascript" src="osgUtil.js"></script>
+<script type="text/javascript" src="osgViewer.js"></script>
+<script type="text/javascript" src="items.js"></script>
+<script type="text/javascript" src="manipulator.js"></script>
+
+<script type="text/javascript">
+
+function getWindowSize() {
+    var myWidth = 0, myHeight = 0;
+    
+    if( typeof( window.innerWidth ) == 'number' ) {
+        //Non-IE
+        myWidth = window.innerWidth;
+        myHeight = window.innerHeight;
+    } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+        //IE 6+ in 'standards compliant mode'
+        myWidth = document.documentElement.clientWidth;
+        myHeight = document.documentElement.clientHeight;
+    } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+        //IE 4 compatible
+        myWidth = document.body.clientWidth;
+        myHeight = document.body.clientHeight;
+    }
+    return { 'w': myWidth, 'h': myHeight };
+//    window.alert( 'Width = ' + myWidth );
+//    window.alert( 'Height = ' + myHeight );
+}
+
+var Viewer;
+window.addEventListener("load",
+//  jQuery(document).load( 
+function() {
+
+  DATA_URL="build/data/";
+
+  var size = getWindowSize();
+  var canvas = document.getElementById("CarEditor");
+  canvas.width = size.w;
+  canvas.height = size.h;
+
+  var viewer = new osgViewer.Viewer(canvas);
+  Viewer = viewer;
+  viewer.init();
+  viewer.setupManipulator(new osgGA.AutomaticOrbitManipulator());
+  viewer.getManipulator().setDistance(9.0);
+  viewer.getManipulator().setMinDistance(3.2);
+  viewer.getManipulator().setMaxDistance(9.0);
+  viewer.initEditor();
+  viewer.run();
+
+  window.setTimeout(function() {
+jQuery('#ChassisMop').trigger('click');
+}, 2000);
+
+}
+, true);
+
+</script>
+
+</head>
+
+
+
+<body>
+  
+  <div id="control" onselectstart="return false">
+    <div id="elements">
+      <ul id="chassis"></ul>
+      <ul id="slots"></ul>
+      <ul id="items"></ul>
+    </div>
+    <div id="clear">
+    </div>
+    <br/>
+  </div>
+
+  <div id="View">
+  <canvas id="CarEditor" style="border: none;"></canvas>
+  </div>
+
+
+</body>
+
+</html>

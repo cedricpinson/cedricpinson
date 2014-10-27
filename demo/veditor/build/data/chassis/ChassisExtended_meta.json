@@ -1,0 +1,22 @@
+{
+    "SlotWheelBL.001": [
+        "ItmWheel18"
+    ], 
+    "SlotWheelBR.001": [
+        "ItmWheel18"
+    ], 
+    "SlotWheelFL.001": [
+        "ItmWheel18"
+    ], 
+    "SlotWheelFR.001": [
+        "ItmWheel18"
+    ], 
+    "SlotWheelML.002": [
+        "ItmWheel18", 
+        "ItmWheelSquare"
+    ], 
+    "SlotWheelMR.002": [
+        "ItmWheel18", 
+        "ItmWheelSquare"
+    ]
+}

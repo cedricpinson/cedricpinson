@@ -1,0 +1,29 @@
+
+The data are organized by Chassis, Slots, Items
+Chassis is a structure which contains Slots.
+Slots is where we will attach Items.
+Items is a containers of item that can be attached to Slots, it's like a category of model compatible for the slot Items will be attached
+
+A Slots can have more than one Items, typically it's used to say. On the Slot Wheel you can attach Items Wheel30" and Wheel31"
+Here an example:
+Item Wheel30" contains 4 differents type of Wheel:
+Wheel0
+Wheel1
+Wheel2
+Wheel3
+
+Item Wheel31" contains 2 differents type of Wheel:
+SuperWheel
+ShinyWheel
+
+So now imagine the Slot Wheel has attached Wheel30" and Wheel31" then we can attach Wheel0, Wheel1, Wheel2, Wheel3, SuperWheel, ShinyWheel to the Slot Wheel.
+As another example if we have another Slot WheelBack that only has Wheel31" attached, then we will only be able to attach SuperWheel and ShinyWheel.
+
+In Blender to setup this behaviour we organised data like below:
+Chassis is hierarchy the root must be named Chassisxxxxx, that can be a model composed by empties or not
+Slot is an Empty that must be named Slotxxxxx its name must start with "Slot"
+Items is a group named Itemxxxxx, it must start by "Item". To add Items to Slot you just need to instanciate a Group and add it as child of the slot you want.
+
+
+Export Process
+In the export process, all slots are checked and all group as child will be referenced to be plugable to the Slot.

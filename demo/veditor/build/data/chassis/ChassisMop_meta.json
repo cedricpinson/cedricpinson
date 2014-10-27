@@ -1,0 +1,29 @@
+{
+    "SlotBack": [
+        "ItmMopBack"
+    ], 
+    "SlotBackBumper": [
+        "ItmMopBumper"
+    ], 
+    "SlotBackLight": [
+        "ItmMopBackLight"
+    ], 
+    "SlotFrontGlass": [
+        "ItmMopFrontGlas"
+    ], 
+    "SlotFrontGrille": [
+        "ItmMopFrontGrille"
+    ], 
+    "SlotFrontHood": [
+        "ItmMopFrontHood"
+    ], 
+    "SlotFrontLight": [
+        "ItmMopFrontLight"
+    ], 
+    "SlotIsoFix": [
+        "ItmMopIsofix"
+    ], 
+    "SlotTop": [
+        "ItmMopTop"
+    ]
+}
