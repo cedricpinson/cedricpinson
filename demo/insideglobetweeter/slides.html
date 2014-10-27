@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!--
+
+    ***************************************************
+    *                                                 *
+    * DZ-Slides: HTML Template for your presentations *
+    *                                                 *
+    ***************************************************
+      More information: http://paulrouget.com/dzslides
+
+
+    Author: @paulrouget <paul@mozilla.com>
+
+    Contributor(s):
+      - Anthony Ricaud <rik24d@gmail.com>
+      - Louis-Rémi Babé <lrbabe@gmail.com>
+
+
+    LICENSE:
+      DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+      Version 2, December 2004
+
+      Copyright (C) 2004 Sam Hocevar <sam@hocevar.net>
+
+      Everyone is permitted to copy and distribute verbatim or modified
+      copies of this license document, and changing it is allowed as long
+      as the name is changed.
+
+      DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+      TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+
+      0. You just DO WHAT THE FUCK YOU WANT TO.
+
+
+    -->
+
+
+
+    <title>Inside <a href="https://mozillademos.org/demos/globetweeter/demo.html">GlobeTweeter</a></title>
+
+        <!--
+        ************************************
+        *                                  *
+        *               CSS                *
+        *                                  *
+        ************************************
+        -->
+
+
+      <style>
+        /*
+        ************************************
+        *    CSS CORE:                     *
+        *    YOU DON'T WANT TO EDIT THIS   *
+        *    (but you can)                 *
+        ************************************
+        */
+
+        html { overflow: hidden; }
+        body, html { height: 100%; padding: 0px; }
+        body { margin: auto; position: relative; }
+        img, video { vertical-align: middle; }
+        /* FIXME : Mandatory for flex box model, Firefox bug */
+        /* See JS hack */
+        section > div { width: 100%; display: -moz-box; -moz-box-orient : vertical; -moz-box-pack : center; -moz-box-align : center; }
+        section > div { width: 100%; display: -webkit-box; -webkit-box-orient : vertical; -webkit-box-pack : center; -webkit-box-align : center; }
+        footer { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; position: absolute; bottom: 0; padding: 1em; width: 100%; }
+        .flex-wrapper { display: -moz-box; display: -webkit-box; -moz-box-orient: horizontal; -webkit-box-orient: horizontal; width: 100%; }
+        footer .flex-space { -moz-box-flex: 1; -webkit-box-flex: 1; }
+        section { -moz-transition-property: -moz-transform, opacity; -moz-transition-duration: 1s, 1s; pointer-events: none; display: block; width: 100%; margin: auto; position: absolute; padding: 0 10px; opacity: 0; -moz-box-sizing: border-box; }
+        section { -webkit-transition-property: -webkit-transform, opacity; -webkit-transition-duration: 1s, 1s; pointer-events: none; -webkit-box-sizing: border-box; }
+        section h1, section h2, section h3, section p { text-align: center; margin: .3em; margin: 0; padding: 0; }
+        section[aria-selected] { opacity: 1; pointer-events: auto; -moz-transition-delay: 1s, 1s; -webkit-transition-delay: 1s, 1s; }
+        pre { font-size: 23px; border-left: 2px solid white; padding-left: 10px; white-space: pre-wrap;       /* css-3 */ word-wrap: break-word;       /* Internet Explorer 5.5+ */ line-height: 1.15em; } 
+        a { color: #a2efff!important; text-decoration: none; }
+        a:hover { color: #6fe7ff!important; text-decoration: none; }
+
+        .level2 {
+        font-size: 35px;
+        }
+        .front {
+        font-size: 150px;
+        }
+        /*
+        ************************************
+        *    CSS OPTIONS:                  *
+        *    YOU WANT TO EDIT THIS         *
+        *                                  *
+        ************************************
+        */
+
+        /* Want your own font? Use font-face */
+        @font-face  {
+          /* Uncomment and add your own font file
+          font-family: fface;
+          src: url(myfont.ttf);
+          */
+        }
+
+        /* The backgrounds of all your slides */
+        body {
+          /* Could be an image, a color, a gradient 
+          background-image: -moz-radial-gradient( 50% 30% 90deg, circle, #006EA0 0%, #304160 600px);
+          background-image: -webkit-gradient(radial, 50% 30%, 0, 50% 30%, 600, from(#006EA0), to(#304160));
+*/
+        background-image: url("back2.jpg");
+        -moz-background-size: 100% 100%;
+        -o-background-size: 100% 100%;
+        -webkit-background-size: 100% 100%; 
+        background-size: 100% 100%;
+        }
+
+        /* This is the style of a slide */
+        section {
+          font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+          font-weight: bold;
+          font-size: 55px;
+          /*text-shadow: 0px -2px 0px #374683; 
+          text-shadow: 0px -4px 4px #000000; */
+          color: white;
+          /*
+          Your own font?
+          font-family: fface;
+          */
+        }
+
+        /* This part define the transitions between the slides
+           Here I propose 3 differents effect:
+             Default translation (classic "sliding" effect)
+             Rotation (a bit dizzy... "DZ"? You get it? \o/)
+             Nothing (just a fadein/fadeout)
+           With the CSS3 transformations, you can create your own.
+         */
+
+
+        /* Let me describe how the slides work:
+           A slide can be:
+           - the current slide
+           - A upcoming slide (from the "future")
+           - A slide already seen (from the "past")
+           With CSS, you describe where are those slide,
+           in the space. Then, a transition will animate
+           this.
+        */
+
+
+
+        /* "PAST" ******************************/
+        section {
+
+          /* The sliding effect */
+          -moz-transform: translate(-100%, 0);
+          -webkit-transform: translate(-100%, 0);
+
+          /* The rotating effect
+          -moz-transform: scale(0.3) rotate(180deg);
+          -webkit-transform: scale(0.3) rotate(180deg);
+          */
+
+          /* The nothing effect */
+          /* Well, just comment out the rotating and sliding effect*/
+
+        }
+
+        /* The footer with the title + the current slide number */
+        #footer {
+          display: block;
+          color: white;
+          opacity: 0.5;
+
+          /*
+          display: none;
+          */
+        }
+
+
+        /* "PRESENT" ****************************/
+        /* Current slide */
+        section[aria-selected] {
+          -moz-transform: scale(1.0) translate(0, 0);
+          -webkit-transform: scale(1.0) translate(0, 0);
+        }
+
+        /* "FUTURE" *****************************/
+        /* Selector not yet supported by Webkit :( */
+        section[aria-selected] ~ section {
+
+          /* The sliding effect */
+          -moz-transform: translate(100%, 0);
+          -webkit-transform: translate(100%, 0);
+
+          /* The rotating effect
+          -moz-transform: scale(5) rotate(-180deg);
+          -webkit-transform: scale(5) rotate(-180deg);
+          */
+
+          /* The nothing effect */
+          /* Well, just comment the rotating and sliding effect*/
+
+
+        }
+
+      </style>
+    </head>
+
+        <!--
+        ************************************
+        *                                  *
+        *        HTML: YOUR SLIDES         *
+        *                                  *
+        ************************************
+        -->
+
+      <section class="front">
+        <h1>Inside <a href="https://mozillademos.org/demos/globetweeter/demo.html">GlobeTweeter</a></h1>
+      </section>
+
+      <section>
+        <p><a href="https://mozillademos.org/demos/globetweeter/demo.html">GlobeTweeter</a> - Main Loop</p>
+        <ul>
+          <li> Active loop with window.requestAnimationFrame <pre>
+run: function() {
+    var that = this;
+    var render = function() {
+        window.requestAnimationFrame(render, this.canvas);
+        that.frame();
+    };
+    render();
+} </pre> </li>
+          <li>3D with <a href="http://osgjs.org/"> OSGJS </a></li>
+          <li>
+            <a href="http://socket.io/"> Socket.IO</a> to manage network
+<pre>
+socket.on('message', function(message){
+    hideConnection();
+    LastTweetReceived = new Date();
+    processTweet(message);
+});
+</pre>
+          </li>
+          <li> Processing a tweet means
+            <ul class="level2">
+              <li>update statistics</li>
+              <li>get image avatar</li>
+              <li>generate hit on wave</li>
+              <li>draw it on the globe</li>
+              </ul>
+</li>
+        </ul>
+      </section>
+
+      <section>
+        <p><a href="http://en.wikipedia.org/wiki/Scene_graph">SceneGraph</a> - <a href="http://osgjs.org/"> OSGJS </a></p>
+        <ul>
+        <li><a href="http://osgjs.org/"> OSGJS </a>, js version of <a href="http://openscenegraph.org">OpenSceneGraph</a></li>
+        <li>Easier to manage a 3D object
+<pre>var transform = new osg.MatrixTransform();
+transform.setMatrix(osg.Matrix.makeTranslate(10,0,0));
+getJSON("http://plopbyte.com/model.json"), function(data) {
+    transform.addChild(osg.ParseSceneGraph(data));
+}</pre></li>
+        <li>Manage the opengl state
+<pre>var texture = osg.Texture.create("textures/texture.png");
+var quad = osg.createTexturedQuad(-20, -20, 0, 40, 0 ,0, 0, 40,0);
+quad.getOrCreateStateSet().setTextureAttributeAndMode(0, texture);
+</pre></li>
+        <li>Picking
+<pre>
+computeIntersections: function (x, y, traversalMask) {
+    if (traversalMask === undefined) {
+        traversalMask = ~0;
+    }
+    var iv = new osgUtil.IntersectVisitor();
+    iv.setTraversalMask(traversalMask);
+    iv.addLineSegment([x,y,0.0], [x,y,1.0]);
+    iv.apply(this);
+    return iv.hits;
+}
+</pre>
+        </li>
+        </ul>
+      </section>
+
+      <section>
+        <a href="gt_tree.jpg"><img src="gt_tree.jpg"/></a>
+      </section>
+
+      <section>
+        <p><a href="https://mozillademos.org/demos/globetweeter/demo.html">GlobeTweeter</a> - Globe data</p>
+        <ul>
+        <li>Data source from <a href="http://www.naturalearthdata.com/"> natural earth data </a></li>
+        <li><a href="http://en.wikipedia.org/wiki/WGS84">WGS84</a> projection of data</li>
+        <li><a href="http://showwebgl.com/show/?q=fxaeg6xeuvc4so0sgcgkswsgk0sw8g4&LIGHT=0"> Countries </a> lines - <a href="http://showwebgl.com/show/?q=e8lx1nt7jd448k8cg8g4gsws44owsgo&LIGHT=0"> projected </a></li>
+        <li><a href="http://showwebgl.com/show/?q=6f68hn2hr8so44csowwc4skkcgg4s8k&LIGHT=0"> Coast </a> lines - <a href="http://showwebgl.com/show/?q=iy9ll8zf4kgks8cw8wk0oc48g8w80ww&LIGHT=0"> projected </a></li>
+        <li><a href="http://showwebgl.com/show/?q=g6lu4j6t5m8scg4s8og0wkwwss0gwk0&LIGHT=0&CULL_FACE=0"> Countries </a> polygon  - <a href="http://showwebgl.com/show/?q=lvzodmgqc7kcsc0k08cgs08owwsccwk&CULL_FACE=0"> projected </a></li>
+        <li><a href="http://showwebgl.com/show/?q=ageig6tuwqgw04gscw40k08s0ssgckg&LIGHT=0"> All combined </a></li>
+        </ul>
+      </section>
+
+      <section>
+        <p><a href="https://mozillademos.org/demos/globetweeter/demo.html">GlobeTweeter</a> - Wave</p>
+        <ul>
+        <li><a href="http://freespace.virgin.net/hugo.elias/graphics/x_water.htm"> 2D ripples simulation </a></li>
+        <li>2 128x64 canvas, 1/30 update</li>
+        <li>Vertex Shader<pre>
+float height = texture2D( Texture0, TexCoord0.xy).x;
+vec3 normal = normalize(Vertex);
+vec3 normalTransformed = vec3(NormalMatrix * vec4(normal,0.0));
+height *= max(0.0, dot(normalTransformed, vec3(0,0,1)));
+gl_Position = ProjectionMatrix * ModelViewMatrix * 
+              vec4(Vertex +  normal * ( height * maxHeight * scale),1.0); </pre></li>
+        <li><a href="http://showwebgl.com/show/?q=7m1vu1clptog8ccs880o0s44cwks000&LIGHT=0">Model</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <p><a href="https://mozillademos.org/demos/globetweeter/demo.html">GlobeTweeter</a> - Tweets</p>
+        <ul>
+          <li>
+            Textured Quads projected on earth
+            <pre>
+function computeCoordinateFrame( latitude,  longitude, localToWorld)
+{
+    // Compute up vector
+    var  up = [ Math.cos(longitude)*Math.cos(latitude), 
+                Math.sin(longitude)*Math.cos(latitude), 
+                Math.sin(latitude) ];
+    // Compute east vector
+    var east = [-Math.sin(longitude), Math.cos(longitude), 0];
+    // Compute north vector = outer product up x east
+    var north = osg.Vec3.cross(up,east);
+
+    // set matrix
+    osg.Matrix.set(localToWorld,0,0, east[0]);
+    osg.Matrix.set(localToWorld,0,1, east[1]);
+    osg.Matrix.set(localToWorld,0,2, east[2]);
+    osg.Matrix.set(localToWorld,1,0, north[0]);
+    osg.Matrix.set(localToWorld,1,1, north[1]);
+    osg.Matrix.set(localToWorld,1,2, north[2]);
+    osg.Matrix.set(localToWorld,2,0, up[0]);
+    osg.Matrix.set(localToWorld,2,1, up[1]);
+    osg.Matrix.set(localToWorld,2,2, up[2]);
+}            </pre>
+          </li>
+          <li> Tweets are composed in a canvas
+            <img src="tweets.jpg"/>
+          </li>
+        </ul>
+      </section>
+      <section>
+<p>Tweets Update</p>
+<pre>update: function(node, nv) {
+    var ratio = 0, pcurrentTime = nv.getFrameStamp().getSimulationTime();
+    if (node.startTime === undefined) { // It means we start the local timer
+        node.startTime = currentTime;
+        if (node.duration === undefined)
+            node.duration = 5.0;
+    }
+    var dt = currentTime - node.startTime;
+    if (dt > node.duration) { // exceded duration, we hide it
+        node.setNodeMask(0);
+        return;
+    }
+    ratio = dt/node.duration; // give a ratio related to elapsed/duration
+    if (node.originalMatrix) {
+        var scale;
+        if (dt > 1.0) // clamp to  after 1.0 sec
+            scale = 1.0;
+        else
+            scale = osgAnimation.EaseOutElastic(dt); // get an elastic curve on scale
+
+        // because we can zoom a lot we affect the scaling by another factor
+        scale = scale * (this.manipulator.height/this.WGS_84_RADIUS_EQUATOR);
+        if (this.manipulator.height > this.limit) { // magic number add a second factor
+            var rr = 1.0 - (this.manipulator.height-this.limit) * 0.8/(2.5*this.WGS_84_RADIUS_EQUATOR-this.limit);
+            scale *= rr;
+        }
+        node.setMatrix(osg.Matrix.mult(node.originalMatrix, osg.Matrix.makeScale(scale, scale, scale)));
+    }
+
+    var value = (1.0 - osgAnimation.EaseInQuad(ratio)); // fade out
+    var uniform = node.uniform;
+    var c = [value, value, value, value];
+    uniform.set(c);
+    node.traverse(nv);
+}</pre>
+      </section>
+      <section>
+        <p> Credits/Thanks </p>
+        <p> <br></p>
+        <p>Code - <a href="http://plopbyte.com">Cedric Pinson</a> <a href="http://twitter.com/trigrou">@trigrou</a></p>
+        <p>Design - <a href="http://littleworkshop.fr">Guillaume Lecollinet</a> <a href="http://twitter.com/glecollinet">@glecollinet</a></p>
+        <p>Hack js - Johan Euphrosine <a href="http://twitter.com/proppy">@proppy</a></p>
+        <p>DzSlides- Paul Rouget <a href="https://bitbucket.org/paul/dzslides">dzslides</a></p>
+        <p><br></p>
+        <p>Get GlobeTweeter on <a href="https://github.com/cedricpinson/globetweeter"> github</a></p>
+        <p>Test the <a href="https://demos.mozilla.org/en-US/#globetweeter"> demo</a> or check the <a href="http://www.youtube.com/watch?v=ul9cIj7wISE">video</a></p>
+        <p>Display 3D model with <a href="http://showwebgl.com/"> ShowWebGL </a></p>
+      </section>
+
+      <section>
+        <p><a href="http://plopbyte.com/insideglobetweeter/">http://plopbyte.com/insideglobetweeter/</a>
+          <br>
+        </p>
+        <br>
+        <img src="qr.png"/>
+      </section>
+
+    <script>
+
+      /*
+      ************************************
+      *                                  *
+      *            JAVASCRIPT            *
+      *  (You don't have to read this)   *
+      ************************************
+      */
+
+      function init() {
+        var firstFrame = window.location.hash? parseInt(window.location.hash.split("#")[1], 10) : 1;
+        var title = document.querySelector("title").textContent;
+        var slides = document.querySelectorAll("body > section");
+        for (var i = 1, il = slides.length; i <= il; i++) {
+          // FIXME : Mandatory for flex box model for vertical align
+          // Firefox bug :(
+          slides[i - 1].innerHTML = "<div>" + slides[i - 1].innerHTML + "</div>";
+          window.history[(i == 1? 'replace' : 'push') + 'State'](i, title + " ("+ i +"/"+ il +")", "#"+i);
+        }
+
+        var footer = document.createElement("footer");
+        footer.id = "footer";
+        footer.innerHTML = 
+          '<div class="flex-wrapper"><p>' + title + '</p>' +
+          '<p class="flex-space"></p>' + 
+          '<p id="index"><span class="pagenumber"></span> / ' + il +'</p>';
+        document.body.appendChild(footer);
+        history.go(- slides.length + firstFrame);
+
+
+        window.addEventListener("popstate", function(e) {
+          if(e.state) {
+            var old = document.querySelector("section[aria-selected]");
+            var next = document.querySelector("section:nth-of-type("+ e.state +")");
+
+            if (old) {
+              old.removeAttribute("aria-selected");
+              if (old.hasAttribute("data-onunload")) {
+                window[old.getAttribute("data-onunload")].call(window, old);
+              }
+            }
+
+            if (next) {
+              next.setAttribute("aria-selected", "true");
+              if (next.hasAttribute("data-onload")) {
+                window[next.getAttribute("data-onload")].call(window, next);
+              }
+            }
+
+
+            var index = document.querySelector("#index .pagenumber");
+            index.innerHTML = e.state;
+          }
+        }, true); 
+      }
+
+      function resize() {
+        var style = document.getElementById("resizeStyle");
+        if (!style) {
+          style = document.createElement("style");
+          style.id = "resizeStyle";
+          document.head.appendChild(style);
+        }
+        style.textContent = "body>section>div {height: "+ window.innerHeight +"px}";
+      }
+
+      window.addEventListener("resize", resize, true);
+      window.addEventListener("load", resize, true);
+      window.addEventListener("load", init, true);
+
+      // Webkit bug
+      // window.addEventListener("hashchange", init, true); // FIXME Webkit fires hashchange when it shouldn't
+      window.addEventListener("keydown", function(e) {
+        // Don't intercept keyboard shortcuts
+        if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
+          return;
+        }
+        if (   e.keyCode == 80 // p
+            || e.keyCode == 66 // b
+            || e.keyCode == 37 // left arrow
+            || e.keyCode == 33 // page up
+        ) {
+          e.preventDefault();
+          history.back();
+        }
+        if (   e.keyCode == 78 // n
+            || e.keyCode == 32 // space
+            || e.keyCode == 39 // right arrow
+            || e.keyCode == 34 // page down
+        ) {
+          e.preventDefault();
+          history.forward();
+        }
+
+        var current = parseInt(window.location.hash.split("#")[1], 10)
+        //console.log(current);
+        switch(e.keyCode) {
+        case 49:
+           history.go(1 - current);
+        break;
+        case 50:
+           history.go(2 - current);
+        break;
+        case 51:
+           history.go(3 - current);
+        break;
+        case 52:
+           history.go(4 - current);
+        break;
+        case 53:
+           history.go(5 - current);
+        break;
+        case 54:
+           history.go(6 - current);
+        break;
+        case 55:
+           history.go(7 - current);
+        break;
+        case 56:
+           history.go(8 - current);
+        break;
+        case 57:
+           history.go(9 - current);
+        break;
+        }                                   
+      }, true);
+    </script>
+  </body>
+</html>
