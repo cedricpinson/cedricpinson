@@ -43,8 +43,9 @@ make it works on most browser with webgl so I did not use the extension.
 The consequence is that particles coordinates has to be encoded in
 specific format on rgba pixels.
 
--   ![](media/2011/11/buffers.jpg "SAMSUNG")
--   ![](media/2011/11/pixels.jpg "SAMSUNG")
+![](media/2011/11/buffers.jpg "SAMSUNG")
+
+![](media/2011/11/pixels.jpg "SAMSUNG")
 
 In my previous [particles
 toy]({filename}/webgl-particles.md) I used 16 bits fixed
@@ -113,8 +114,9 @@ position to fit the shape I want, eg:
     // it's easy after to use this direction to create a force and make the
     // particle go in the direction of the shape`
 
--   ![](media/2011/11/Title.jpg "Title")
--   ![](media/2011/11/Title_grad.jpg "Title_grad")
+![](media/2011/11/Title.jpg "Title")
+
+![](media/2011/11/Title_grad.jpg "Title_grad")
 
 This technique was used for most of the motions/shapes I wanted the
 particles to fit in. I tried to manipulate particles manually but it was

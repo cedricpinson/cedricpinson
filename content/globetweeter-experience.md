@@ -22,8 +22,9 @@ I started off by creating a file system similar to the 3D file system
 used in Jurassic Park. I had to figure out the best type of camera that
 would be suitable to use with the system.
 
--   ![](media/2011/03/camera-1.jpg "Camera")
--   ![](media/2011/03/camera-0.jpg "Camera")
+![](media/2011/03/camera-1.jpg "Camera")
+
+![](media/2011/03/camera-0.jpg "Camera")
 
 The idea is simple. Let's say a user selects the item **B** . When
 selected, the camera moves from its current viewpoint to the chosen
@@ -70,8 +71,9 @@ triangles in order to have enough vertex to project a clean shape on the
 sphere. For this I have created a tool called 'grid'. It tessellates the
 input shape with a grid. It's a kind of boolean union operation.
 
--   ![](media/2011/03/grid.jpg "grid")
--   ![](media/2011/03/grid0.jpg "grid0")
+![](media/2011/03/grid.jpg "grid")
+
+![](media/2011/03/grid0.jpg "grid0")
 
 Above on the left, you can see the white model that is the original
 '110m admin 0 countries.shp'. The black model is the same model but
@@ -85,10 +87,13 @@ vertex onto a sphere using the standard [WGS84
 projection](http://en.wikipedia.org/wiki/WGS84). **You can see a webgl
 version of the projected model by clicking on the picture**.
 
--   ![](media/2011/03/globe-2.jpg "globe-2")
--   ![](media/2011/03/globe-1.jpg "globe-1")
--   ![](media/2011/03/globe-0.jpg "globe-0")
--   ![](media/2011/03/globe-4.jpg "globe-4")
+![](media/2011/03/globe-2.jpg "globe-2")
+
+![](media/2011/03/globe-1.jpg "globe-1")
+
+![](media/2011/03/globe-0.jpg "globe-0")
+
+![](media/2011/03/globe-4.jpg "globe-4")
 
 Once the data below were ready we selected a nice color for each model.
 On the demo I drew the globe in two passes. The first pass drew back

@@ -16,8 +16,9 @@ Each has its own speed and specific paths. The user can select any of
 these ships to take advantage of the pilot’s view and explore the scene.
 In this post I will explain how we made it.
 
--   ![](media/2012/01/xlarge_nv_2_361c2.jpg "xlarge_nv_2_361c2")
--   ![](media/2012/01/xlarge_nv_3_4b86e.jpg "xlarge_nv_3_4b86e")
+![](media/2012/01/xlarge_nv_2_361c2.jpg "xlarge_nv_2_361c2")
+
+![](media/2012/01/xlarge_nv_3_4b86e.jpg "xlarge_nv_3_4b86e")
 
 click for [real time version here](http://nouvellevague.ultranoir.com/)
 ( after the video intro ). If your browser does not support webgl you
@@ -31,8 +32,9 @@ leave a tweet. We did not want to manage vehicle collisions, after a
 while, we decided to organize scene and vehicles animations like the
 picture below.
 
--   ![](media/2012/01/animation_row0.jpg "animation_row0")
--   ![](media/2012/01/animation_row1.jpg "animation_row1")
+![](media/2012/01/animation_row0.jpg "animation_row0")
+
+![](media/2012/01/animation_row1.jpg "animation_row1")
 
 The idea is to avoid vehicles to penetrate each other, for this we
 constrained each vehicle in a 'row' in which the animation will be
@@ -66,8 +68,9 @@ it in realtime. Below you can see picture from the [Valve
 paper](http://www.valvesoftware.com/publications/2007/SIGGRAPH2007_AlphaTestedMagnification.pdf),
 both image are at the same resolution.
 
--   ![](media/2012/01/valve_0.png "valve_0")
--   ![](media/2012/01/valve_12.png "valve_1")
+![](media/2012/01/valve_0.png "valve_0")
+
+![](media/2012/01/valve_12.png "valve_1")
 
 (Pictures from valve paper)
 
@@ -106,8 +109,9 @@ range. Off course we had to tune the range for each animations of
 vehicles. You can see below the differents event in timeline for a
 vehicles.
 
--   ![](media/2012/02/timeline_0.jpg "timeline_0")
--   ![](media/2012/02/timeline_1.jpg "timeline_1")
+![](media/2012/02/timeline_0.jpg "timeline_0")
+
+![](media/2012/02/timeline_1.jpg "timeline_1")
 
 *Delay Random*: random time before playing vehicle animation.
 *Leave tweet*: time when the tweet box leave the vehicle and play the
@@ -131,8 +135,9 @@ project the shape of the plane onto the ground. Using this method meant
 no soft edges for shadow plus some artifact due to blending. Deadline
 make us to fix it later.
 
--   ![](media/2012/01/shadow_issue.jpg "shadow_issue")
--   ![](media/2012/01/shadow_issue2.jpg "shadow_issue2")
+![](media/2012/01/shadow_issue.jpg "shadow_issue")
+
+![](media/2012/01/shadow_issue2.jpg "shadow_issue2")
 
 There is a [shadow
 example](http://osgjs.org/osgjs/examples/shadow/index.html) in
@@ -155,8 +160,9 @@ would be better to use pseudo instancied cube or pack all cube into one
 model and passing transformation to the shader with attributes or
 uniforms, again time...
 
--   ![](media/2012/01/transition_0.jpg "transition_0")
--   ![](media/2012/01/transition_1.jpg "transition_1")
+![](media/2012/01/transition_0.jpg "transition_0")
+
+![](media/2012/01/transition_1.jpg "transition_1")
 
 Clouds
 ------
@@ -181,8 +187,9 @@ different method
 
 <!-- -->
 
--   ![](media/2012/01/cloud_0.jpg "cloud_0")
--   ![](media/2012/01/cloud_1.jpg "cloud_1")
+![](media/2012/01/cloud_0.jpg "cloud_0")
+
+![](media/2012/01/cloud_1.jpg "cloud_1")
 
 Tools
 -----

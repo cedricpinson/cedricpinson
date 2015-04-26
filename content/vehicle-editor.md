@@ -14,5 +14,6 @@ it convert it to osg.js . If you have a modern browser with
 have a try with [real time version](demo/veditor/) or try
 the video on [youtube](http://www.youtube.com/watch?v=kMAqplEhnOA)
 
--   ![](media/2011/03/screen0.jpg "screen0")
--   ![](media/2011/03/screen1.jpg "screen1")
+![](media/2011/03/screen0.jpg "screen0")
+
+![](media/2011/03/screen1.jpg "screen1")

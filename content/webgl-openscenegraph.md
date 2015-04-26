@@ -27,5 +27,6 @@ To get a WebGL Implementation have look to Khronos instructions
 You have a browser that is able to run webGL try the realtime version
 <demo/demo-room-osg-js>
 
--   ![](media/2010/04/Screenshot_0.jpg "Screenshot_0")
--   ![](media/2010/04/Screenshot_1.jpg "Screenshot_1")
+![](media/2010/04/Screenshot_0.jpg "Screenshot_0")
+
+![](media/2010/04/Screenshot_1.jpg "Screenshot_1")

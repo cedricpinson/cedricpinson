@@ -9,4 +9,4 @@ am happy for having reviewed the technical part of this book and I
 recommand it for all beginners who wanted to start quickly on
 [OpenSceneGraph](http://openscenegraph.org)
 
--   [![](media/2011/01/BeginnersGuide.png "BeginnersGuide")](https://www.packtpub.com/openscenegraph-3-0-beginners-guide/book)
+[![](media/2011/01/BeginnersGuide.png "BeginnersGuide")](https://www.packtpub.com/openscenegraph-3-0-beginners-guide/book)

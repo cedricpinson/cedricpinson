@@ -22,5 +22,6 @@ To get a WebGL Implementation have look to Khronos instructions
 You need a browser able to run webGL to try the [realtime version](demo/webgl-particles-demo/)
 or use youtube
 
--   [![](media/2010/08/screen2.jpg "Screenshot-2")](http://www.youtube.com/watch?v=ShrUOL1V-xc)
--   [![](media/2010/08/screen0.jpg "Screenshot-0")](http://www.youtube.com/watch?v=ShrUOL1V-xc)
+[![](media/2010/08/screen2.jpg "Screenshot-2")](http://www.youtube.com/watch?v=ShrUOL1V-xc)
+
+[![](media/2010/08/screen0.jpg "Screenshot-0")](http://www.youtube.com/watch?v=ShrUOL1V-xc)
